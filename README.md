@@ -96,6 +96,25 @@ services:
 $ docker compose up -d
 ```
 
+You can face an error like this if you are using Apple Silicon M1 or M2 chip
+
+```console
+docker compose up -d
+[+] Running 0/1
+ ⠦ dtl Pulling                                                             2.6s 
+no matching manifest for linux/arm64/v8 in the manifest list entries
+
+platform: linux/amd64
+```
+
+add platform type of to the docker-compose.yml docker-compose-testnet.yml docker-compose-mainnet.yml
+```console
+services:
+  dtl:
+    image: metisdao/data-transport-layer:20230713210754
+    platform: linux/amd64
+```
+
 It means the start-up was successful if you see the both services are healthy.
 
 ```console
